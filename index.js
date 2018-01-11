@@ -1,7 +1,11 @@
 const express = require('express');
 const multer = require('multer');
+const bodyParser = require('body-parser');
 
 const app = express();
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 const fileFilter = function(req, file, cb) {
   if (!file.originalname.match(/\.(jpg|jpeg|gif|png)$/)) {
